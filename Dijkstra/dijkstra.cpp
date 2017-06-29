@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 class coordinate {
 	int x, y;
 public:
@@ -7,7 +10,7 @@ public:
 	int getX() {return x;}
 	int getY() {return y;}
 };
-void displayGrid(int l, int w, coordinate coords[]) {
+void displayGrid(int l, int w, coordinate coords[], std::vector<coordinate> path) {
 	for(int i=0; i<l; i++) {
 		for(int j=0; j<w; j++) {
 			if((i == coords[0].getX() && j == coords[0].getY()) || (i == coords[1].getX() && j == coords[1].getY())) {
@@ -19,15 +22,15 @@ void displayGrid(int l, int w, coordinate coords[]) {
 	}
 }
 void dijkstra() {
-
+	//Note: if there are multiple paths of equal length, use a PRNG to pick a path
 }
 int main() {
-	int length, width, temp; coordinate coords[2]; //coordinate path[]
+	int length, width, temp; coordinate coords[2]; std::vector<coordinate> path;
 	std::cout << "\nDijkstra's Algorithm 1.0\nEnter the length of the grid:\n"; std::cin >> length;
 	std::cout << "Enter the width of the grid:\n"; std::cin >> width;
 	std::cout << "Enter the x-position of the starting point:\n"; std::cin >> temp; coords[0].setX(temp);
 	std::cout << "Enter the y-position of the starting point:\n"; std::cin >> temp; coords[0].setY(temp);
 	std::cout << "Enter the x-position of the end point:\n"; std::cin >> temp; coords[1].setX(temp);
 	std::cout << "Enter the y-position of the end point:\n"; std::cin >> temp; coords[1].setY(temp);
-	displayGrid(length, width, coords); //tests grid for now
+	displayGrid(length, width, coords, path); //tests grid for now
 }
