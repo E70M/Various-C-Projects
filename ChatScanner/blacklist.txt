@@ -1,0 +1,14 @@
+apple
+banana
+fruit
+orange
+pear
+kiwi
+grape
+apricot
+nectarine
+jicama
+vegetable
+carrot
+corn
+potato
