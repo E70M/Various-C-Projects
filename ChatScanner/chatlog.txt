@@ -1,3 +1,4 @@
 A70E: I really want something to eat.
 CapCap3: Oh yeah? What do you want?
 A70E: Probably an apple or something.
+CapCap3: I think I want a banana instead.
