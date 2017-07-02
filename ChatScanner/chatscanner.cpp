@@ -6,13 +6,13 @@ int lineCount(std::string filename) {
     return line_count;
 }
 std::string get_bl_keyword(int pos, std::string filename) {
-	std::ifstream file(filename.c_str()); std::string line, bar;
+	std::ifstream file(filename.c_str()); file.unsetf(std::ios_base::skipws); std::string line, bar;
 	for(int i=0; i<pos; i++) {std::getline(file, line);}
 	bar = line;
 	return bar;
 }
 int main() {
-	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt"); 
+	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt");
 	int cl_length = lineCount("chatlog.txt"), bl_length = lineCount("blacklist.txt");
 	std::cout << "The chat log is " << cl_length << " lines long.\n"; //test length
 	std::cout << "The blacklist is " << bl_length << " lines long.\n"; //test length
