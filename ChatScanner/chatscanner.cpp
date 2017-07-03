@@ -30,4 +30,5 @@ int main() {
 			}
 		}
 	}
+	chatlog.close(); blacklist.close(); return 0;
 }
