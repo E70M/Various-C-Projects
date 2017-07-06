@@ -2,32 +2,29 @@
 #include <fstream>
 int lineCount(std::string filename) {
 	std::ifstream file(filename.c_str()); file.unsetf(std::ios_base::skipws);
-    unsigned line_count = std::count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n');
-    return line_count;
+    return std::count(std::istream_iterator<char>(file), std::istream_iterator<char>(), '\n') + 1;
 }
 std::string get_bl_keyword(int pos, std::string filename) {
-	std::ifstream file(filename.c_str()); file.unsetf(std::ios_base::skipws); std::string line, bar;
+	std::ifstream file(filename.c_str()); file.unsetf(std::ios_base::skipws); std::string line;
 	for(int i=0; i<pos; i++) {std::getline(file, line);}
-	bar = line;
-	return bar;
+	return line;
 }
-int main() {
-	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt");
-	int cl_length = lineCount("chatlog.txt"), bl_length = lineCount("blacklist.txt");
-	std::cout << "Chat log length: " << cl_length << "\nBlacklist length: " << bl_length << "\n"; //test length
-	for(int i=1; i<bl_length+1; i++) {
-		std::cout << "Keyword: " << get_bl_keyword(i, "blacklist.txt") << "\n"; //test keyword selection
-		while(!chatlog.eof()) {
-			std::string line; std::getline(chatlog, line);
-			for(int k=0; k<line.length(); k++) {
-				for(int j=line.length(); j>k; j--) {
-					if(line.substr(j, k) == get_bl_keyword(i, "blacklist.txt")) {
-						std::string user = line.substr(0, line.find(":"));
-						std::cout << "Flagged user: " << user << ". Would you like to ban this player?\n";
-					}
-				}
+void checkChat(std::string line, int blPos) {
+	for(int k=0; k<line.length(); k++) {
+		for(int j=line.length(); j>k; j--) {
+			if(line.substr(j, k) == get_bl_keyword(blPos, "blacklist.txt")) {
+				std::cout << "Flagged user: " << line.substr(0, line.find(":")) << ". Want to ban them?\n";
 			}
 		}
+	}
+}
+int main() {
+	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt"); std::string line; int bl_length = lineCount("blacklist.txt");
+	std::cout << "\nBlacklist length: " << bl_length << "\n"; //test length
+	for(int i=1; i<bl_length+1; i++) {
+		std::cout << "Scanning chat for: " << get_bl_keyword(i, "blacklist.txt") << "\n";
+		while(!chatlog.eof()) {std::getline(chatlog, line); checkChat(line, i);}
+		std::getline(chatlog, line); checkChat(line, bl_length);
 	}
 	chatlog.close(); blacklist.close(); return 0;
 }
