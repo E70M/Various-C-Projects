@@ -14,10 +14,9 @@ std::string get_bl_keyword(int pos, std::string filename) {
 int main() {
 	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt");
 	int cl_length = lineCount("chatlog.txt"), bl_length = lineCount("blacklist.txt");
-	std::cout << "The chat log is " << cl_length << " lines long.\n"; //test length
-	std::cout << "The blacklist is " << bl_length << " lines long.\n"; //test length
-	std::cout << "Test keyword: " << get_bl_keyword(1, "blacklist.txt") << "\n"; //test keyword selection
+	std::cout << "Chat log length: " << cl_length << "\nBlacklist length: " << bl_length << "\n"; //test length
 	for(int i=1; i<bl_length+1; i++) {
+		std::cout << "Keyword: " << get_bl_keyword(i, "blacklist.txt") << "\n"; //test keyword selection
 		while(!chatlog.eof()) {
 			std::string line; std::getline(chatlog, line);
 			for(int k=0; k<line.length(); k++) {
