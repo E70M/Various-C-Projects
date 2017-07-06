@@ -19,8 +19,8 @@ void checkChat(std::string line, int blPos) {
 	}
 }
 int main() {
-	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt"); std::string line; int bl_length = lineCount("blacklist.txt");
-	std::cout << "\nBlacklist length: " << bl_length << "\n"; //test length
+	std::ifstream chatlog("chatlog.txt"), blacklist("blacklist.txt"); std::string line;
+	int bl_length = lineCount("blacklist.txt");
 	for(int i=1; i<bl_length+1; i++) {
 		std::cout << "Scanning chat for: " << get_bl_keyword(i, "blacklist.txt") << "\n";
 		while(!chatlog.eof()) {std::getline(chatlog, line); checkChat(line, i);}
