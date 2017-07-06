@@ -22,7 +22,7 @@ int main() {
 			std::string line; std::getline(chatlog, line);
 			for(int k=0; k<line.length(); k++) {
 				for(int j=line.length(); j>k; j--) {
-					if(line.substr() == get_bl_keyword(i, "blacklist.txt")) {
+					if(line.substr(j, k) == get_bl_keyword(i, "blacklist.txt")) {
 						std::string user = line.substr(0, line.find(":"));
 						std::cout << "Flagged user: " << user << ". Would you like to ban this player?\n";
 					}
