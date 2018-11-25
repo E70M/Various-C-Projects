@@ -4,7 +4,8 @@
  *	Project: API Call Builder
  *	Description: Reads in fields and values from a csv file and writes them to a text 
  *	file as formatted JSON strings.
- *	Distributed with a free-will license. (Insert all the legal jargon)
+ *	Distributed with a free-will license. Use it any way you want, profit or free, provided it fits in
+ *  the licenses of its associated works.
  */
 #include <iostream>
 #include <fstream>
