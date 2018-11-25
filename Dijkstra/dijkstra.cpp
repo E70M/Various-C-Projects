@@ -11,28 +11,34 @@ int main() {
 	int nodeCount;
 	std::cout << "Enter number of nodes:" << std::endl;
 	std::cin >> nodeCount;
-	double weights[nodeCount][nodeCount];
+	double distances[nodeCount][nodeCount];
 	for(int i = 0; i < nodeCount; i++) {
 		for(int j = 0; j < nodeCount; j++) {
-			if(i == j) {
-				weights[i][j] = 0;
-			} else if(j < i) {
-				weights[i][j] = weights[j][i];
+			distances[i][j] = 0;
+		}
+	}
+	for(int i = 0; i < nodeCount; i++) {
+		int edges;
+		std::cout << "How many nodes is node " << i + 1 << " connected to?" << std::endl;
+		std::cin >> edges;
+		for(int j = 0; j < edges; j++) {
+			int pos;
+			std::cout << "Enter a node that node " << i + 1 << " is connected to:" << std::endl;
+			std::cin >> pos;
+			if(i == pos - 1) {
+				distances[i][pos - 1] = 0;
+			} else if(pos - 1 < i) {
+				distances[i][pos - 1] = distances[pos - 1][i];
 			} else {
-				std::cout << "Enter weight of path from node " << i + 1 << " to node " << j + 1 << ":\n";
-				std::cin >> weights[i][j];
-				if(weights[i][j] < 0) {
-					weights[i][j] *= -1;
-				}
+				std::cout << "Enter the distance between the two nodes:" << std::endl;
+				std::cin >> distances[i][pos - 1];
 			}
 		}
 	}
-	/*
 	for(int i = 0; i < nodeCount; i++) {
 		for(int j = 0; j < nodeCount; j++) {
-			std::cout << weights[i][j] << " ";
+			std::cout << distances[i][j] << " ";
 		}
-		std::cout << std::endl;
-	}
-	*/ //for test purposes only, displays adjacency matrix
+		std::cout << "\n";
+	} // for testing purposes only
 }
