@@ -58,6 +58,6 @@ int main() {
 	node nodes[] = { NULL };
 	for(int i = 0; i < nodeCount; i++) {
 		nodes[i] = node(i + 1);
-		std::cout << "node " << nodes[i].getID() << "\tpath from source: " << nodes[i].getPath(1) << std::endl;
+		std::cout << "node " << nodes[i].getID() << "\tpath from source: " << nodes[i].getPath(source) << std::endl;
 	}
 }
