@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> bubbleSort(std::vector<int> arr) {
+void bubbleSort(std::vector<int> &arr) {
 	for(int i = 0; i < arr.size(); i++) {
 		for(int j = i + 1; j < arr.size(); j++) {
 			if(arr[i] > arr[j]) {
@@ -11,7 +11,6 @@ std::vector<int> bubbleSort(std::vector<int> arr) {
 			}
 		}
 	}
-	return arr;
 }
 
 int main() {
@@ -30,7 +29,7 @@ int main() {
 		std::cout << arr[i] << " ";
 	}
 	std::cout << "\nOrdered set (in ascending order): ";
-	arr = bubbleSort(arr);
+	bubbleSort(arr);
 	for(int i = 0; i < n; i++) {
 		std::cout << arr[i] << " ";
 	}
