@@ -18,6 +18,7 @@ int main() {
 	int nodeCount, source = 0;
 	std::cout << "Enter number of nodes:" << std::endl;
 	std::cin >> nodeCount;
+	//const int initSetLength = (const int)nodeCount;
 	while(source < 1 || source > nodeCount) {
 		std::cout << "Which node is the source? Please enter an integer from 1 to " << nodeCount << ".\n";
 		std::cin >> source;
@@ -25,6 +26,7 @@ int main() {
 			std::cout << "Out of range." << std::endl;
 		}
 	}
+	//double weights[initSetLength][initSetLength];
 	double weights[nodeCount][nodeCount];
 	for(int i = 0; i < nodeCount; i++) {
 		for(int j = 0; j < nodeCount; j++) {
