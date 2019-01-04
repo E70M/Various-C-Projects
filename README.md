@@ -10,4 +10,4 @@ PassGen - Generates a random password, with the number of characters based on us
 
 SizeFile - Determines the filesize of a given file. Relies on user input for the file's name and directory.
 
-Sorting Algorithms - Rather than being true projects, each file in this folder demonstrates my understanding of various methods of sorting datasets. List of completed sorting algorithms: Bubble sort.
+Sorting Algorithms - Rather than being true projects, each file in this folder demonstrates my understanding of various methods of sorting datasets. List of completed sorting algorithms: Bubble sort, quick sort, merge sort, heap sort, selection sort.
